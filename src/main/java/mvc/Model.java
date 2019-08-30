@@ -7,17 +7,13 @@ public class Model {
 
     List<Usuario> usuarios = new ArrayList<>();
 
-
     public void cadastraUsuario(String nome, String email, String cpf) {
-
         this.usuarios.add(new Usuario(nome, email, cpf));
-
     }
 
-    public void buscaTodosUsuarios() {
-
+    public List<Usuario> buscaTodosUsuarios() {
+        return this.usuarios;
     }
-
 
     class Usuario {
 
@@ -31,4 +27,5 @@ public class Model {
         String email;
         String cpf;
     }
+
 }
