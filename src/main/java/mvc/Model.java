@@ -2,6 +2,7 @@ package mvc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Model {
 
@@ -11,11 +12,16 @@ public class Model {
         this.usuarios.add(new Usuario(nome, email, cpf));
     }
 
-    public List<Usuario> buscaTodosUsuarios() {
-        return this.usuarios;
+    public List<String> buscaTodosUsuarios() {
+
+        List<String> returnList;
+
+        returnList = this.usuarios.stream().map(Usuario::toString).collect(Collectors.toList());
+
+        return returnList;
     }
 
-    class Usuario {
+    private class Usuario {
 
         public Usuario(String nome, String email, String cpf) {
             this.nome = nome;
@@ -26,6 +32,15 @@ public class Model {
         String nome;
         String email;
         String cpf;
+
+        @Override
+        public String toString() {
+            return "Usuario{" +
+                    "nome='" + nome + '\'' +
+                    ", email='" + email + '\'' +
+                    ", cpf='" + cpf + '\'' +
+                    '}';
+        }
     }
 
 }
